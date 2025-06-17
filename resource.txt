@@ -2,6 +2,7 @@ Streamlit tutorials:
 https://docs.streamlit.io/develop/tutorials
 https://docs.streamlit.io/get-started/tutorials/create-an-app
 https://www.youtube.com/watch?v=sogNluduBQQ
+https://www.youtube.com/watch?v=kelsLTolXBU
 
 Spotify API:
 https://developer.spotify.com/documentation/web-api/tutorials/getting-started
