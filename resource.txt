@@ -1,0 +1,69 @@
+Streamlit tutorials: 
+https://docs.streamlit.io/develop/tutorials
+https://docs.streamlit.io/get-started/tutorials/create-an-app
+https://www.youtube.com/watch?v=sogNluduBQQ
+
+Spotify API:
+https://developer.spotify.com/documentation/web-api/tutorials/getting-started
+AI Prompt: how to use spotify client id and secret and redirect uri in python code
+Ans: To use Spotify's client_id, client_secret, and redirect_uri in Python, you typically authenticate with the Spotify Web API using the spotipy library, which simplifies the OAuth2 flow.
+
+✅ Step-by-Step Guide
+1. Install Spotipy
+bash
+Copy
+Edit
+pip install spotipy
+2. Import and Set Up Credentials
+python
+Copy
+Edit
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+
+# Replace these with your actual credentials
+CLIENT_ID = 'your_client_id'
+CLIENT_SECRET = 'your_client_secret'
+REDIRECT_URI = 'http://localhost:8888/callback'  # Common default for local testing
+
+# Define scope (permissions you're requesting)
+SCOPE = 'user-library-read user-read-playback-state user-modify-playback-state'
+
+# Create SpotifyOAuth object
+sp_oauth = SpotifyOAuth(client_id=CLIENT_ID,
+                        client_secret=CLIENT_SECRET,
+                        redirect_uri=REDIRECT_URI,
+                        scope=SCOPE)
+
+# Create Spotipy client
+sp = spotipy.Spotify(auth_manager=sp_oauth)
+3. Use the Client
+Now that you're authenticated, you can make API calls:
+
+python
+Copy
+Edit
+# Get current user's saved tracks
+results = sp.current_user_saved_tracks(limit=10)
+
+for idx, item in enumerate(results['items']):
+    track = item['track']
+    print(f"{idx + 1}. {track['name']} by {track['artists'][0]['name']}")
+🔒 Important Notes:
+Your redirect URI must match exactly with what's registered in your Spotify Developer Dashboard.
+
+The first time you run it, it will open a browser window for you to log in and authorize access.
+
+After authentication, Spotipy automatically stores a token cache in .cache, so you don’t have to log in every time.
+
+🎯 Example Use Case
+python
+Copy
+Edit
+# Play a specific track
+track_uri = "spotify:track:4uLU6hMCjMI75M1A2tKUQC"
+sp.start_playback(uris=[track_uri])
+Let me know if you want to make a full app or run this on a server without user login!
+
+Gemini API:
+https://ai.google.dev/gemini-api/docs/quickstart
